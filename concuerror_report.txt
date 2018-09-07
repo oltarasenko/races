@@ -1,0 +1,93 @@
+Concuerror v0.20.0 started at 07 Sep 2018 12:20:48
+ Options:
+  [{after_timeout,infinity},
+   {assertions_only,false},
+   {assume_racing,true},
+   {depth_bound,500},
+   {disable_sleep_sets,false},
+   {dpor,optimal},
+   {entry_point,{'Elixir.Conquer',start_sup,[]}},
+   {exclude_module,[]},
+   {first_process_errors_only,false},
+   {ignore_error,[abnormal_exit]},
+   {instant_delivery,true},
+   {interleaving_bound,infinity},
+   {keep_going,true},
+   {non_racing_system,[]},
+   {print_depth,20},
+   {scheduling,round_robin},
+   {scheduling_bound_type,none},
+   {show_races,false},
+   {strict_scheduling,false},
+   {symbolic_names,true},
+   {timeout,5000},
+   {treat_as_normal,[]},
+   {use_receive_patterns,true}]
+################################################################################
+Exploration completed!
+  No errors found!
+################################################################################
+Warnings:
+--------------------------------------------------------------------------------
+* Concuerror does not properly support erlang:process_info(_, status), returning always 'running' instead.
+* Concuerror does not properly support erlang:process_info(_, heap_size), returning 42 instead.
+* Concuerror does not properly support erlang:process_info(_, stack_size), returning 42 instead.
+* Concuerror does not properly support erlang:process_info(_, reductions), returning 42 instead.
+* Some errors were ignored ('--ignore_error').
+
+################################################################################
+Tips:
+--------------------------------------------------------------------------------
+* Running without a scheduling_bound corresponds to verification and may take a long time.
+* Your test sends messages to the 'user' process to write output. Such messages from different processes may race, producing spurious interleavings. Consider using '--non_racing_system user' to avoid them.
+
+################################################################################
+Info:
+--------------------------------------------------------------------------------
+* Showing progress (-h progress, for details)
+* Writing results in concuerror_report.txt
+* Automatically instrumented module io_lib
+* Showing PIDs as "<symbolic name(/last registered name)>" ('-h symbolic_names').
+* "--ignore_error crash" converted to "--ignore_error abnormal_exit"
+* Automatically instrumented module 'Elixir.Conquer'
+* Automatically instrumented module 'Elixir.ParentSup'
+* Automatically instrumented module 'Elixir.Supervisor'
+* Automatically instrumented module 'Elixir.Keyword'
+* Automatically instrumented module supervisor
+* Automatically instrumented module gen_server
+* Automatically instrumented module gen
+* Automatically instrumented module proc_lib
+* Automatically instrumented module erlang
+* Automatically instrumented module 'Elixir.Access'
+* Automatically instrumented module 'Elixir.Enum'
+* Automatically instrumented module lists
+* Automatically instrumented module 'Elixir.GenServer'
+* Automatically instrumented module 'Elixir.Process'
+* Automatically instrumented module 'Elixir.ChildSup'
+* Automatically instrumented module 'Elixir.IO'
+* Automatically instrumented module io
+* Automatically instrumented module 'Elixir.Kernel'
+* Automatically instrumented module 'Elixir.Inspect.Opts'
+* Automatically instrumented module 'Elixir.Inspect.Algebra'
+* Automatically instrumented module 'Elixir.Inspect'
+* Automatically instrumented module 'Elixir.Inspect.List'
+* Automatically instrumented module 'Elixir.Inspect.Map'
+* Automatically instrumented module 'Elixir.Inspect.Atom'
+* Automatically instrumented module 'Elixir.Macro'
+* Automatically instrumented module elixir_config
+* Automatically instrumented module 'Elixir.String.Tokenizer'
+* Automatically instrumented module 'Elixir.Inspect.Integer'
+* Automatically instrumented module 'Elixir.Inspect.Tuple'
+* Automatically instrumented module 'Elixir.ArgumentError'
+* Automatically instrumented module error_logger
+* Automatically instrumented module application
+* Automatically instrumented module application_controller
+* Automatically instrumented module gen_event
+* Automatically instrumented module sets
+* Automatically instrumented module dict
+* Automatically instrumented module sys
+* You can see pairs of racing instructions (in the report and '--graph') with '--show_races true'
+
+################################################################################
+Done at 07 Sep 2018 12:20:52 (Exit status: ok)
+  Summary: 0 errors, 8/8 interleavings explored
