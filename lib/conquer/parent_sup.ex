@@ -5,12 +5,24 @@ defmodule ParentSup do
     Supervisor.start_link(__MODULE__, [], name: __MODULE__)
   end
 
-  def start_child(queue_name) do
-    Supervisor.start_child(__MODULE__, [queue_name])
+  def start_child() do
+    Supervisor.start_child(__MODULE__, [])
   end
 
-  def terminate_child(pid) do
-    Supervisor.terminate_child(__MODULE__, pid)
+  def stop() do
+    Supervisor.stop(__MODULE__)
+  end
+
+  def terminate_child() do
+    case Supervisor.which_children(__MODULE__) do
+      [] ->
+        :ok
+
+      l ->
+        {_id, pid, _type, _mod} = Enum.random(l)
+        IO.puts("Terminating: #{inspect(pid)}")
+        Supervisor.terminate_child(__MODULE__, pid)
+    end
   end
 
   @impl true

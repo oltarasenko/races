@@ -6,31 +6,25 @@ defmodule ChildSup do
 
   import Supervisor.Spec
 
-  def start_link(queue_name) do
-    Supervisor.start_link(
-      __MODULE__,
-      queue_name
-    )
+  def start_link() do
+    Supervisor.start_link(__MODULE__, [])
   end
 
   @doc """
   This is the callback from `start_link` which initialises the Supervisor.
   """
-  @callback init(queue_name :: atom) :: {:ok, Supervisor.Spec.spec()}
-  def init(queue_name) do
-    IO.puts("Starting child...")
-
+  def init(_args) do
     child_spec = [
-      %{
-        id: Worker,
-        start: {Worker, :start_link, [queue_name]},
-        restart: :temporary,
-        type: :worker,
-        shutdown: 5000
-      },
+      # %{
+      #   id: Worker,
+      #   start: {Worker, :start_link, [queue_name]},
+      #   restart: :temporary,
+      #   type: :worker,
+      #   shutdown: 5000
+      # },
       %{
         id: TrappedWorker,
-        start: {TrappedWorker, :start_link, [queue_name]},
+        start: {TrappedWorker, :start_link, []},
         restart: :temporary,
         type: :worker,
         shutdown: 5000

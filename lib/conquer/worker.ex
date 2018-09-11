@@ -10,14 +10,11 @@ defmodule Worker do
   end
 
   def init(queue) do
-    IO.puts("[error] Started worker (simple)...")
-    Registry.register(MyReg, {:worker, queue}, self())
     Process.send_after(self(), :stop_me, 500)
     {:ok, %{}}
   end
 
   def handle_info(:stop_me, state) do
-    IO.puts("[error] Exit worker...")
     Process.exit(self(), :random)
     {:noreply, state}
   end
